@@ -56,9 +56,40 @@ const Hero = () => {
                 className="absolute bottom-0 left-0 h-1 bg-white"
               />
             </motion.span>
-            <br />
-            di Mican
           </motion.h1>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
+            className="text-5xl lg:text-7xl font-bold leading-tight mt-2"
+          >
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+              className="inline-block mr-2"
+            >
+              Di
+            </motion.span>
+
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
+              className="relative inline-block px-4 py-1 rounded-xl align-middle"
+            >
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500/25 via-purple-500/25 to-blue-500/25 blur-md"
+              />
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-xl border border-white/10"
+              />
+              <span className="relative gradient-text">Mican</span>
+            </motion.span>
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}

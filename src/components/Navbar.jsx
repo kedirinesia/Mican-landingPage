@@ -28,14 +28,14 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-black/90 backdrop-blur-xl border-b border-white/10' 
+        (isScrolled || isMobileMenuOpen)
+          ? 'bg-black/90 backdrop-blur-xl border-b border-white/10'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Brand Name */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center"
@@ -138,7 +138,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 pb-4 border-t border-white/10"
+              className="md:hidden mt-4 pb-4 border-t border-white/10 bg-black/90 backdrop-blur-xl rounded-2xl"
             >
               <div className="flex flex-col space-y-4 pt-4">
                 {navItems.map((item, index) => (

@@ -2,6 +2,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Download as DownloadIcon, Smartphone } from 'lucide-react'
+import appstoreLogo from '/assets/appstoreLogo.png'
+import googlePlayLogo from '/assets/googlePlayLogo.png'
 
 const Download = () => {
   const [ref, inView] = useInView({
@@ -56,7 +58,8 @@ const Download = () => {
             Bergabunglah dengan ribuan klien yang telah merasakan layanan profesional terbaik
           </motion.p>
 
-          {/* Download Buttons */}
+          {/* Download Buttons */
+          }
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -64,64 +67,26 @@ const Download = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             {/* App Store */}
-            <motion.div
-              whileHover={{ 
-                scale: 1.05,
-                y: -5
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="group"
+            <motion.a
+              href="#"
+              aria-label="Download on the App Store"
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center h-16 sm:h-16 rounded-2xl overflow-hidden border border-white/20 hover:border-white/40 transition-all bg-black/0"
             >
-              <motion.div
-                whileHover={{ 
-                  boxShadow: "0 20px 40px rgba(255,255,255,0.2)"
-                }}
-                className="bg-black border border-white/20 rounded-2xl p-4 hover:border-white/40 transition-all duration-300 cursor-pointer"
-              >
-                <div className="flex items-center space-x-4">
-                  <motion.div
-                    whileHover={{ rotate: 5 }}
-                    className="w-12 h-12 bg-white rounded-xl flex items-center justify-center"
-                  >
-                    <Smartphone size={24} className="text-black" />
-                  </motion.div>
-                  <div className="text-left">
-                    <p className="text-white font-semibold">Download on the</p>
-                    <p className="text-white text-xl font-bold">App Store</p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+              <img src={appstoreLogo} alt="Download on the App Store" className="h-full w-auto block" />
+            </motion.a>
 
             {/* Google Play */}
-            <motion.div
-              whileHover={{ 
-                scale: 1.05,
-                y: -5
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="group"
+            <motion.a
+              href="#"
+              aria-label="Get it on Google Play"
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center h-16 sm:h-16 rounded-2xl overflow-hidden border border-white/20 hover:border-white/40 transition-all bg-black/0"
             >
-              <motion.div
-                whileHover={{ 
-                  boxShadow: "0 20px 40px rgba(255,255,255,0.2)"
-                }}
-                className="bg-black border border-white/20 rounded-2xl p-4 hover:border-white/40 transition-all duration-300 cursor-pointer"
-              >
-                <div className="flex items-center space-x-4">
-                  <motion.div
-                    whileHover={{ rotate: -5 }}
-                    className="w-12 h-12 bg-white rounded-xl flex items-center justify-center"
-                  >
-                    <DownloadIcon size={24} className="text-black" />
-                  </motion.div>
-                  <div className="text-left">
-                    <p className="text-white font-semibold">GET IT ON</p>
-                    <p className="text-white text-xl font-bold">Google Play</p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+              <img src={googlePlayLogo} alt="Get it on Google Play" className="h-full w-auto block" />
+            </motion.a>
           </motion.div>
 
           {/* Additional CTA */}
