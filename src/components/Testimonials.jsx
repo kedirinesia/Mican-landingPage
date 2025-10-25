@@ -1,13 +1,38 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Quote } from 'lucide-react'
+import { Quote, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const Testimonials = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
   })
+  
+  const scrollRef = useRef(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const scrollToTestimonial = (index) => {
+    const container = scrollRef.current
+    if (container) {
+      const cardWidth = 320 + 24 // width + gap
+      container.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth'
+      })
+      setCurrentIndex(index)
+    }
+  }
+
+  const scrollLeft = () => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : testimonials.length - 1
+    scrollToTestimonial(newIndex)
+  }
+
+  const scrollRight = () => {
+    const newIndex = currentIndex < testimonials.length - 1 ? currentIndex + 1 : 0
+    scrollToTestimonial(newIndex)
+  }
 
   const testimonials = [
     {
@@ -27,6 +52,18 @@ const Testimonials = () => {
       author: "Andi",
       role: "Business Owner",
       avatar: "A"
+    },
+    {
+      content: "Platform yang sangat recommended! Pendamping berkualitas tinggi dan proses transaksi aman. Sangat puas dengan layanannya.",
+      author: "Rina",
+      role: "Marketing Manager",
+      avatar: "R"
+    },
+    {
+      content: "Pengalaman luar biasa! Pendamping profesional yang membuat acara perusahaan kami berkesan. Highly recommended!",
+      author: "Dedi",
+      role: "HR Director",
+      avatar: "D"
     }
   ]
 
@@ -97,42 +134,78 @@ const Testimonials = () => {
           </motion.p>
         </motion.div>
 
-        {/* Testimonials Grid */}
+        {/* Testimonials Scrollable Container */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="relative"
         >
+          {/* Navigation Buttons */}
+          <div className="flex justify-between items-center mb-6">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={scrollLeft}
+              className="p-3 bg-mican-gray border border-mican-border rounded-full hover:bg-mican-border transition-all duration-300"
+            >
+              <ChevronLeft size={20} className="text-white" />
+            </motion.button>
+            
+            <div className="flex space-x-2">
+              {testimonials.map((_, index) => (
+                <motion.button
+                  key={index}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => scrollToTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentIndex === index ? 'bg-white' : 'bg-mican-border'
+                  }`}
+                />
+              ))}
+            </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={scrollRight}
+              className="p-3 bg-mican-gray border border-mican-border rounded-full hover:bg-mican-border transition-all duration-300"
+            >
+              <ChevronRight size={20} className="text-white" />
+            </motion.button>
+          </div>
+
+          {/* Scrollable Testimonials */}
+          <div ref={scrollRef} className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ 
-                y: -10,
+                y: -5,
                 transition: { duration: 0.3 }
               }}
-              className="group"
+              className="group flex-shrink-0 w-80 snap-center"
             >
               <motion.div
                 whileHover={{ 
                   scale: 1.02,
                   boxShadow: "0 25px 50px rgba(0,0,0,0.4)"
                 }}
-                className="card h-full relative overflow-hidden"
+                className="card h-full relative overflow-hidden min-h-[280px]"
               >
-                {/* Quote Icon */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.5 + index * 0.2, duration: 0.6 }}
-                  className="absolute top-6 right-6 opacity-10"
-                >
-                  <Quote size={48} className="text-white" />
-                </motion.div>
-
                 {/* Content */}
                 <div className="space-y-6">
+                  {/* Quote Icon - Above Text */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.5 + index * 0.2, duration: 0.6 }}
+                    className="flex justify-center opacity-20"
+                  >
+                    <Quote size={24} className="text-white" />
+                  </motion.div>
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -202,6 +275,7 @@ const Testimonials = () => {
               </motion.div>
             </motion.div>
           ))}
+          </div>
         </motion.div>
 
         {/* Floating Elements */}

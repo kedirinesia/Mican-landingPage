@@ -164,12 +164,13 @@ const Hero = () => {
                       ]
                     }}
                     transition={{ duration: 3, repeat: Infinity }}
-                    className="relative"
+                    className="relative bg-gray-200 rounded-full overflow-hidden w-24 h-24 border-3 border-white/20 shadow-xl"
                   >
                     <img 
                       src={fotoBeth} 
                       alt="Beth Profile" 
-                      className="w-24 h-24 rounded-full object-cover border-3 border-white/20 shadow-xl"
+                      className="w-full h-full object-cover object-center"
+                      style={{ objectPosition: 'center 30%' }}
                     />
                     <motion.div
                       animate={{ 
