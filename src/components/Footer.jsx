@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Facebook, Twitter, Instagram, Youtube, Heart } from 'lucide-react'
+import logoMican from '/logoMican.png'
 
 const Footer = () => {
   const socialLinks = [
@@ -72,7 +73,7 @@ const Footer = () => {
               className="flex items-center mb-6"
             >
               <img 
-                src="/logoMican.png" 
+                src={logoMican} 
                 alt="Mican Logo" 
                 className="h-12 w-auto"
               />

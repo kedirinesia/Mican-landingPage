@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import logoMican from '/logoMican.png'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -40,7 +41,7 @@ const Navbar = () => {
             className="flex items-center"
           >
             <img 
-              src="/logoMican.png" 
+              src={logoMican} 
               alt="Mican Logo" 
               className="h-10 w-auto"
             />

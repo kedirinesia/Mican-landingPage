@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Download, Play, Heart, Calendar, MessageCircle } from 'lucide-react'
+import fotoBeth from '/assets/fotoBeth.jpg'
 
 const Hero = () => {
   const stats = [
@@ -166,7 +167,7 @@ const Hero = () => {
                     className="relative"
                   >
                     <img 
-                      src="/assets/fotoBeth.jpg" 
+                      src={fotoBeth} 
                       alt="Beth Profile" 
                       className="w-24 h-24 rounded-full object-cover border-3 border-white/20 shadow-xl"
                     />
