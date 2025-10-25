@@ -7,6 +7,7 @@ import HowItWorks from './components/HowItWorks'
 import Testimonials from './components/Testimonials'
 import Download from './components/Download'
 import Footer from './components/Footer'
+import ChatAI from './components/ChatAI'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Features />
       <HowItWorks />
       <Testimonials />
+      <ChatAI />
       <Download />
       <Footer />
     </div>

@@ -49,12 +49,6 @@ const Hero = () => {
               className="gradient-text relative"
             >
               Pacar Profesional
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: '100%' }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute bottom-0 left-0 h-1 bg-white"
-              />
             </motion.span>
           </motion.h1>
 
@@ -77,7 +71,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.1, duration: 0.6 }}
-              className="relative inline-block px-4 py-1 rounded-xl align-middle"
+              className="relative inline-block px-3 py-1 rounded-xl align-middle ml-0"
             >
               <span
                 aria-hidden
@@ -87,7 +81,7 @@ const Hero = () => {
                 aria-hidden
                 className="absolute inset-0 rounded-xl border border-white/10"
               />
-              <span className="relative gradient-text">Mican</span>
+              <span className="relative gradient-text tracking-wide">Mican</span>
             </motion.span>
           </motion.h2>
 
