@@ -23,6 +23,7 @@ export default defineConfig({
       }
     }
   },
-  base: '/',
+  // Saat deploy ke GitHub Pages gunakan base sesuai nama repo
+  base: '/mican-landing/',
   publicDir: 'public'
 })
