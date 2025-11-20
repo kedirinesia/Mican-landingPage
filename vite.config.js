@@ -24,6 +24,6 @@ export default defineConfig({
     }
   },
   // Saat deploy ke GitHub Pages gunakan base sesuai nama repo
-  base: '/mican-landing/',
+  base: '/Mican-landingPage/',
   publicDir: 'public'
 })
