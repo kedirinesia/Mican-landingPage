@@ -23,7 +23,7 @@ export default defineConfig({
       }
     }
   },
-  // Saat deploy ke GitHub Pages gunakan base sesuai nama repo
-  base: '/Mican-landingPage/',
+  // Untuk deploy di Vercel gunakan base root
+  base: '/',
   publicDir: 'public'
 })
